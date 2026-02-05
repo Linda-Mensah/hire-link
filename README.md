@@ -1,73 +1,153 @@
-# React + TypeScript + Vite
+# HireLink - Hiring Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**HireLink** is a modern, full-stack hiring management system designed to streamline the recruitment process for both candidates and recruiters. It allows candidates to browse and apply for jobs, while recruiters can manage applications, review candidates, schedule interviews, and generate offer letters.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-## React Compiler
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Authentication](#authentication)
+- [Available Scripts](#available-scripts)
+- [UI Components](#ui-components)
+- [Contributing](#contributing)
+- [Notes](#notes)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Candidate Experience
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Browse job listings with full details
+- Apply through a multi-step application form
+- Resume upload with client-side validation
+- Application confirmation with unique ID
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Recruiter/Admin Experience
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Pipeline board with drag-and-drop stages
+- Candidate review and interview scheduling
+- Generate and send offer letters
+- Track offer status and candidate information
+
+### Shared Features
+
+- Responsive design for desktop and mobile
+- Toast notifications for user feedback
+- Protected routes for recruiter/admin access
+- Clean UI built with Tailwind CSS
+
+---
+
+## Tech Stack
+
+- **Frontend:** React, TypeScript, Tailwind CSS, Lucide React
+- **State Management:** Zustand for global state, React Context for Auth
+- **Routing:** React Router v7.13
+- **Form Management:** React Hook Form + Zod
+- **Notifications:** React Toastify
+- **Bundler:** Vite
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js v18+
+- npm or yarn
+
+### Installation
+
+```bash
+git clone https://github.com/Linda-Mensah/hire-link.git
+cd hire-link
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Run Locally
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The app will be available at http://localhost:5173 (or the port Vite provides).
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project Structure
+
+```text
+src/
+├─ components/
+│  ├─ auth/            # RecruiterRoute
+│  ├─ candidate/       # Candidate-facing components
+│  ├─ pages/           # Standalone pages (e.g., AdminLoginPage)
+│  ├─ recruiter/       # Recruiter/Admin components
+│  ├─ shared/          # Layout, Navigation
+│  └─ ui/              # Reusable UI components
+├─ constants/          # Mock data
+├─ context/            # Auth Context
+├─ hooks/              # Custom hooks
+├─ lib/                # Utils & validators
+├─ stores/             # Zustand stores
+├─ types/              # TypeScript types
+├─ App.tsx
+└─ index.css
+
+```
+
+## Authentication
+
+The authentication system currenlty uses mock credentials and local state for assessment purposes only.
+
+admin@hirelink.com / admin123
+recruiter@hirelink.com / recruit123
+hr@hirelink.com / hr123
+
+## Available Scripts
+
+npm run dev – Start development server
+
+npm run build – Build for production
+
+npm run preview – Preview production build
+
+npm run lint – Lint codebase
+
+npm run format – Format code using Prettier
+
+## UI Components
+
+Navigation: Dynamic links for Jobs and Recruiter pipeline
+
+Cards: Used for candidate info, offer letters, and next steps
+
+Forms: Input, Textarea, Select for offer generation and application forms
+
+Buttons: Gradient buttons with hover states and icons
+
+Toasts: Feedback on actions (login, offer generation, etc.)
+
+## Contributing
+
+Fork the repository
+
+Create a feature branch (git checkout -b feature/my-feature)
+
+Commit your changes (git commit -m "Add my feature")
+
+Push to the branch (git push origin feature/my-feature)
+
+Open a Pull Request
+
+## Notes
+
+The project uses mock data for admins and applications.
+
+UI is built to be clean, modern, and mobile-friendly.
+
+Fast refresh works with proper separation of components and context/hooks.
+
+```
+
+
 ```
