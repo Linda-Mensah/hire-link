@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Calendar, DollarSign, Briefcase } from "lucide-react";
+import { MapPin, Calendar, Briefcase, Banknote } from "lucide-react";
 import { JOBS } from "../../constants/jobs";
 
 export const JobListings: React.FC = () => {
@@ -43,7 +43,7 @@ export const JobListings: React.FC = () => {
                 <span>{job.location}</span>
               </div>
               <div className="flex items-center text-stone-700">
-                <DollarSign className="h-5 w-5 text-stone-400 mr-3" />
+                <Banknote className="h-5 w-5 text-stone-400 mr-3" />
                 <span>{job.salaryRange}</span>
               </div>
               <div className="flex items-center text-stone-700">
