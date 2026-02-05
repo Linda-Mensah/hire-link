@@ -1,3 +1,4 @@
+// job
 export type Job = {
   id: string;
   title: string;
@@ -7,6 +8,8 @@ export type Job = {
   salaryRange: string;
   postedDate: string;
 };
+
+// candidate
 
 export type Candidate = {
   id: string;
@@ -25,11 +28,15 @@ export type Candidate = {
   offerLetter?: string;
 };
 
+// stage
+
 export type StageType =
   | "applied"
   | "reviewed"
   | "interview_scheduled"
   | "offer_sent";
+
+// app form data
 
 export type ApplicationFormData = {
   personalInfo: {
@@ -43,4 +50,10 @@ export type ApplicationFormData = {
     portfolioUrl?: string;
   };
   resume: File | null;
+};
+
+// admin
+export type Admin = {
+  email: string;
+  password: string;
 };

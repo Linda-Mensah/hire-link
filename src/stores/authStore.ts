@@ -1,20 +1,14 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { mockAdmins } from "../constants/mockAdmins";
 
-type Admin = {
-  email: string;
-  password: string;
-};
-
-const mockAdmins: Admin[] = [
-  { email: "admin@hirelink.com", password: "admin123" },
-  { email: "recruiter@hirelink.com", password: "recruit123" },
-  { email: "hr@hirelink.com", password: "hr123" },
-];
+type UserRole = "admin" | "recruiter" | "candidate" | null;
 
 interface AuthState {
   isAuthenticated: boolean;
+  role: UserRole;
   login: (email: string, password: string) => Promise<boolean>;
+  setRole: (role: UserRole) => void;
   logout: () => void;
 }
 
@@ -22,9 +16,9 @@ export const useAuthStore = create<AuthState>()(
   persist(
     (set) => ({
       isAuthenticated: false,
+      role: null,
 
       login: async (email, password) => {
-        // simulate API delay
         await new Promise((resolve) => setTimeout(resolve, 500));
 
         const validAdmin = mockAdmins.find(
@@ -33,17 +27,19 @@ export const useAuthStore = create<AuthState>()(
         );
 
         if (validAdmin) {
-          set({ isAuthenticated: true });
+          set({ isAuthenticated: true, role: "admin" });
           return true;
         }
 
         return false;
       },
 
-      logout: () => set({ isAuthenticated: false }),
+      setRole: (role) => set({ role }),
+
+      logout: () => set({ isAuthenticated: false, role: null }),
     }),
     {
-      name: "auth-storage", // key in localStorage
+      name: "auth-storage",
     },
   ),
 );
