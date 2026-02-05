@@ -24,38 +24,7 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Separator } from "../ui/separator";
-
-const STAGES: {
-  id: StageType;
-  title: string;
-  color: string;
-  bgColor: string;
-}[] = [
-  {
-    id: "applied",
-    title: "Applied",
-    color: "text-blue-700",
-    bgColor: "bg-blue-100",
-  },
-  {
-    id: "reviewed",
-    title: "Reviewed",
-    color: "text-purple-700",
-    bgColor: "bg-purple-100",
-  },
-  {
-    id: "interview_scheduled",
-    title: "Interview Scheduled",
-    color: "text-amber-700",
-    bgColor: "bg-amber-100",
-  },
-  {
-    id: "offer_sent",
-    title: "Offer Sent",
-    color: "text-emerald-700",
-    bgColor: "bg-emerald-100",
-  },
-];
+import { STAGES } from "../../constants/stages";
 
 const PipelineBoard: React.FC = () => {
   const getCandidatesByStage = useApplicationStore(
@@ -66,23 +35,23 @@ const PipelineBoard: React.FC = () => {
   );
   const applications = useApplicationStore((state) => state.applications);
 
-  const handleMoveCandidate = (candidateId: string, newStage: StageType) => {
-    updateCandidateStage(candidateId, newStage);
-  };
+  // const handleMoveCandidate = (candidateId: string, newStage: StageType) => {
+  //   updateCandidateStage(candidateId, newStage);
+  // };
 
   const getStageIndex = (stage: StageType): number => {
     return STAGES.findIndex((s) => s.id === stage);
   };
 
-  const canMoveBack = (candidate: Candidate): boolean => {
-    const currentIndex = getStageIndex(candidate.stage);
-    return currentIndex > 0;
-  };
+  // const canMoveBack = (candidate: Candidate): boolean => {
+  //   const currentIndex = getStageIndex(candidate.stage);
+  //   return currentIndex > 0;
+  // };
 
-  const canMoveForward = (candidate: Candidate): boolean => {
-    const currentIndex = getStageIndex(candidate.stage);
-    return currentIndex < STAGES.length - 1;
-  };
+  // const canMoveForward = (candidate: Candidate): boolean => {
+  //   const currentIndex = getStageIndex(candidate.stage);
+  //   return currentIndex < STAGES.length - 1;
+  // };
 
   const moveToNextStage = (candidateId: string, currentStage: StageType) => {
     const currentIndex = getStageIndex(currentStage);
