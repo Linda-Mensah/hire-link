@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { toast } from "react-toastify";
-import { mockAdmins } from "../../constants/mockAdmins";
+// import { mockAdmins } from "../../constants/mockAdmins";
 
 const AdminLoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -44,13 +44,13 @@ const AdminLoginPage: React.FC = () => {
             />
           </div>
           <h1 className="text-3xl font-bold bg-linear-to-r from-stone-800 to-stone-700 bg-clip-text text-transparent mb-2">
-            Admin Portal
+            HireLink Admin Portal
           </h1>
           <p className="text-stone-600">Secure access to hiring dashboard</p>
         </div>
 
         {/* credentials box */}
-        <div className="mb-8 p-5 border border-amber-200 bg-linear-to-r from-amber-50/80 to-amber-50/50 rounded-xl shadow-sm backdrop-blur-sm">
+        {/* <div className="mb-8 p-5 border border-amber-200 bg-linear-to-r from-amber-50/80 to-amber-50/50 rounded-xl shadow-sm backdrop-blur-sm">
           <p className="font-medium text-amber-900 mb-3 text-sm tracking-wide">
             FOR ASSESSMENT PURPOSES ONLY:
           </p>
@@ -76,13 +76,15 @@ const AdminLoginPage: React.FC = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* login form */}
         <form
           onSubmit={handleSubmit}
           className="w-full flex flex-col gap-5 bg-white/90 backdrop-blur-sm p-7 rounded-2xl shadow-sm border border-stone-100"
         >
+          <h5 className="text-[8px]">Check README.md file for credentials</h5>
+
           <div className="space-y-1">
             <label className="text-sm font-medium text-stone-700">Email</label>
             <input
