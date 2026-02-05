@@ -31,7 +31,7 @@ const RecruiterRoute = ({ children }: { children: React.ReactNode }) => {
 function AppRoutes() {
   return (
     <Routes>
-      {/* public routes */}
+      {/* public */}
       <Route
         path="/"
         element={

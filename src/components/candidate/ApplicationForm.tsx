@@ -11,10 +11,8 @@ import {
   personalInfoSchema,
   experienceSchema,
   resumeSchema,
-} from "../../utils/validation";
-import ResumeStep from "./form-steps/ResumeStep";
-import PersonalInfoStep from "./form-steps/PersonalInfoStep";
-import ExperienceStep from "./form-steps/ExperienceStep";
+} from "../../lib/validation";
+import { steps } from "../../constants/steps";
 
 const formSchema = z.object({
   personalInfo: personalInfoSchema,
@@ -34,6 +32,8 @@ const ApplicationForm: React.FC = () => {
 
   const job = JOBS.find((j) => j.id === jobId);
 
+  // methods
+
   const methods = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -52,12 +52,7 @@ const ApplicationForm: React.FC = () => {
     mode: "onChange",
   });
 
-  const steps = [
-    { title: "Personal Info", component: PersonalInfoStep },
-    { title: "Experience", component: ExperienceStep },
-    { title: "Resume", component: ResumeStep },
-  ];
-
+  // get current step
   const CurrentStepComponent = steps[currentStep].component;
 
   const handleNext = async () => {
@@ -86,12 +81,14 @@ const ApplicationForm: React.FC = () => {
     }
   };
 
+  // back to prev step
   const handleBack = () => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
     }
   };
 
+  // handle form submit
   const handleSubmit = async () => {
     try {
       const values = methods.getValues();
@@ -145,7 +142,7 @@ const ApplicationForm: React.FC = () => {
       </div>
 
       <div className="bg-white rounded-xl shadow-sm border border-stone-200 p-6">
-        {/* Progress Steps */}
+        {/* progress Steps */}
         <div className="mb-10">
           <div className="flex items-center justify-between mb-4">
             {steps.map((step, index) => (

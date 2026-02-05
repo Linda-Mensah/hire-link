@@ -1,16 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { mockAdmins } from "../constants/mockAdmins";
-
-type UserRole = "admin" | "recruiter" | "candidate" | null;
-
-interface AuthState {
-  isAuthenticated: boolean;
-  role: UserRole;
-  login: (email: string, password: string) => Promise<boolean>;
-  setRole: (role: UserRole) => void;
-  logout: () => void;
-}
+import type { AuthState } from "../types";
 
 export const useAuthStore = create<AuthState>()(
   persist(

@@ -3,15 +3,15 @@ import { persist } from "zustand/middleware";
 import type { Candidate, Job, StageType } from "../types";
 
 interface ApplicationStore {
-  // Candidate state
+  // candidate state
   applications: Candidate[];
   currentApplication: Partial<Candidate> | null;
 
-  // Recruiter state
+  // recruiter state
   jobs: Job[];
   selectedCandidate: Candidate | null;
 
-  // Actions
+  // actions
   submitApplication: (
     candidate: Omit<Candidate, "id" | "applicationDate" | "stage">,
   ) => string;
@@ -21,7 +21,7 @@ interface ApplicationStore {
   scheduleInterview: (candidateId: string, date: string) => void;
   generateOffer: (candidateId: string) => void;
 
-  // Getters
+  // getters
   getCandidatesByStage: (stage: StageType) => Candidate[];
   getJobById: (id: string) => Job | undefined;
 }

@@ -18,7 +18,6 @@ const PersonalInfoStep = () => {
       </div>
 
       <div className="space-y-6">
-        {/* Full Name */}
         <div>
           <label className="block text-sm font-medium text-stone-700 mb-2">
             <User className="inline h-4 w-4 mr-2 text-stone-400" />
@@ -42,7 +41,6 @@ const PersonalInfoStep = () => {
           )}
         </div>
 
-        {/* Email */}
         <div>
           <label className="block text-sm font-medium text-stone-700 mb-2">
             <Mail className="inline h-4 w-4 mr-2 text-stone-400" />
@@ -66,7 +64,6 @@ const PersonalInfoStep = () => {
           )}
         </div>
 
-        {/* Phone */}
         <div>
           <label className="block text-sm font-medium text-stone-700 mb-2">
             <Phone className="inline h-4 w-4 mr-2 text-stone-400" />
