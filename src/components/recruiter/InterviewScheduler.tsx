@@ -167,7 +167,7 @@ const InterviewScheduler: React.FC = () => {
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="Add interview details, topics to cover, etc."
-                  className="mt-2 min-h-[100px]"
+                  className="mt-2 min-h-25"
                 />
               </div>
             </div>
