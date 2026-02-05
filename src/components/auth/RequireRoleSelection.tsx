@@ -1,7 +1,8 @@
 import { Navigate } from "react-router-dom";
 import { useAuthStore } from "../../stores/authStore";
+import type { ReactNode } from "react";
 
-const RequireRoleSelection = ({ children }: { children: JSX.Element }) => {
+const RequireRoleSelection = ({ children }: { children: ReactNode }) => {
   const role = useAuthStore((state) => state.role);
 
   if (!role) {

@@ -5,8 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "react-toastify";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
-import { PersonalInfoStep } from "./form-steps/PersonalInfoStep";
-import { ExperienceStep } from "./form-steps/ExperienceStep";
 import { JOBS } from "../../constants/jobs";
 import { useApplicationStore } from "../../stores/applicationStore";
 import {
@@ -15,6 +13,8 @@ import {
   resumeSchema,
 } from "../../utils/validation";
 import ResumeStep from "./form-steps/ResumeStep";
+import PersonalInfoStep from "./form-steps/PersonalInfoStep";
+import ExperienceStep from "./form-steps/ExperienceStep";
 
 const formSchema = z.object({
   personalInfo: personalInfoSchema,
@@ -24,7 +24,7 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-export const ApplicationForm: React.FC = () => {
+const ApplicationForm: React.FC = () => {
   const { jobId } = useParams<{ jobId: string }>();
   const navigate = useNavigate();
   const submitApplication = useApplicationStore(
@@ -47,9 +47,7 @@ export const ApplicationForm: React.FC = () => {
         skills: "",
         portfolioUrl: "",
       },
-      resume: {
-        resume: null,
-      },
+      resume: null,
     },
     mode: "onChange",
   });
@@ -235,3 +233,5 @@ export const ApplicationForm: React.FC = () => {
     </div>
   );
 };
+
+export default ApplicationForm;

@@ -17,20 +17,20 @@ export const experienceSchema = z.object({
   portfolioUrl: z.string().url("Invalid URL").optional().or(z.literal("")),
 });
 
-export const resumeSchema = z.object({
-  resume: z
-    .instanceof(File)
-    .refine(
-      (file) => file.size <= 5 * 1024 * 1024,
-      "File size must be less than 5MB",
-    )
-    .refine(
-      (file) =>
-        [
-          "application/pdf",
-          "application/msword",
-          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        ].includes(file.type),
-      "File must be PDF or DOC/DOCX",
-    ),
-});
+export const resumeSchema = z
+  .instanceof(File)
+  .nullable()
+  .refine(
+    (file) => !file || file.size <= 5 * 1024 * 1024,
+    "File size must be less than 5MB",
+  )
+  .refine(
+    (file) =>
+      !file ||
+      [
+        "application/pdf",
+        "application/msword",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      ].includes(file.type),
+    "File must be PDF or DOC/DOCX",
+  );

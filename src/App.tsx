@@ -8,7 +8,6 @@ import {
 import { ToastContainer } from "react-toastify";
 import { Layout } from "./components/shared/Layout";
 import { JobListings } from "./components/candidate/JobListings";
-import { ApplicationForm } from "./components/candidate/ApplicationForm";
 import ThankYouPage from "./components/candidate/ThankYouPage";
 import InterviewScheduler from "./components/recruiter/InterviewScheduler";
 import CandidateReview from "./components/recruiter/CandidateReview";
@@ -21,6 +20,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
 import "./App.css";
 import { AuthProvider } from "./context/AuthContext";
+import ApplicationForm from "./components/candidate/ApplicationForm";
 
 const RecruiterRoute = ({ children }: { children: React.ReactNode }) => {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
