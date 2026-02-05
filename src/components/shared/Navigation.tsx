@@ -17,11 +17,11 @@ export const Navigation: React.FC = () => {
 
   const handleLogout = () => {
     logout();
-    navigate("/"); // go back to jobs
+    navigate("/");
   };
 
   return (
-    <nav className="flex items-center space-x-4">
+    <nav className="flex items-center space-x-3">
       {navItems.map((item) => {
         const Icon = item.icon;
         const isActive = location.pathname === item.path;
@@ -30,14 +30,14 @@ export const Navigation: React.FC = () => {
             key={item.path}
             to={item.path}
             className={clsx(
-              "flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors",
+              "flex items-center space-x-2.5 px-4 py-2.5 rounded-lg transition-all duration-200 group",
               isActive
-                ? "bg-amber-50 text-amber-900"
-                : "text-stone-600 hover:bg-stone-100 hover:text-stone-900",
+                ? "bg-linear-to-r from-amber-50 to-amber-100/50 text-amber-900 shadow-sm ring-1 ring-amber-200"
+                : "text-stone-600 hover:bg-stone-50 hover:text-stone-900 hover:shadow-sm",
             )}
           >
-            <Icon className="h-5 w-5" />
-            <span className="font-medium">{item.label}</span>
+            <Icon className="h-5 w-5 transition-transform duration-200 group-hover:scale-110" />
+            <span className="font-medium tracking-wide">{item.label}</span>
           </Link>
         );
       })}
@@ -45,7 +45,7 @@ export const Navigation: React.FC = () => {
       {!isAdminLoggedIn && (
         <Link
           to="/admin-login"
-          className="ml-auto px-4 py-2 rounded-lg bg-amber-100 text-amber-900 hover:bg-amber-200"
+          className="ml-auto px-5 py-2.5 rounded-lg bg-linear-to-r from-amber-100 to-amber-50 text-amber-900 hover:from-amber-200 hover:to-amber-100 shadow-sm hover:shadow transition-all duration-200 font-medium ring-1 ring-amber-200 hover:ring-amber-300"
         >
           Admin Login
         </Link>
@@ -54,9 +54,9 @@ export const Navigation: React.FC = () => {
       {isAdminLoggedIn && (
         <button
           onClick={handleLogout}
-          className="ml-auto flex items-center space-x-1 px-4 py-2 rounded-lg bg-red-100 text-red-700 hover:bg-red-200 transition"
+          className="ml-auto flex items-center space-x-2.5 px-5 py-2.5 rounded-lg bg-linear-to-r from-red-50 to-red-50/80 text-red-700 hover:from-red-100 hover:to-red-50 shadow-sm hover:shadow transition-all duration-200 font-medium ring-1 ring-red-200 hover:ring-red-300"
         >
-          <LogOut className="h-4 w-4" />
+          <LogOut className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5" />
           <span>Logout</span>
         </button>
       )}
