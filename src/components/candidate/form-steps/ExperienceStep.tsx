@@ -52,7 +52,7 @@ const ExperienceStep = () => {
           <Textarea
             id="skills"
             {...register("experience.skills")}
-            className={`min-h-[100px] ${
+            className={`min-h-25 ${
               errors.experience?.skills ? "border-red-500" : ""
             }`}
             placeholder="React, TypeScript, Project Management"

@@ -57,3 +57,15 @@ export type Admin = {
   email: string;
   password: string;
 };
+
+// user role
+export type UserRole = "admin" | "recruiter" | "candidate" | null;
+
+// authState
+export type AuthState = {
+  isAuthenticated: boolean;
+  role: UserRole;
+  login: (email: string, password: string) => Promise<boolean>;
+  setRole: (role: UserRole) => void;
+  logout: () => void;
+};

@@ -1,5 +1,6 @@
 import type { StageType } from "../types";
 
+// form stages
 export const STAGES: {
   id: StageType;
   title: string;
