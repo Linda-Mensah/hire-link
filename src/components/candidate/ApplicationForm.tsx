@@ -5,8 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "react-toastify";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
-import { PersonalInfoStep } from "./FormSteps/PersonalInfoStep";
-import { ExperienceStep } from "./FormSteps/ExperienceStep";
+import { PersonalInfoStep } from "./form-steps/PersonalInfoStep";
+import { ExperienceStep } from "./form-steps/ExperienceStep";
 import { JOBS } from "../../constants/jobs";
 import { useApplicationStore } from "../../stores/applicationStore";
 import {
@@ -14,7 +14,7 @@ import {
   experienceSchema,
   resumeSchema,
 } from "../../utils/validation";
-import ResumeStep from "./FormSteps/ResumeStep";
+import ResumeStep from "./form-steps/ResumeStep";
 
 const formSchema = z.object({
   personalInfo: personalInfoSchema,

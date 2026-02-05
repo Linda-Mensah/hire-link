@@ -1,22 +1,30 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Home, Users } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Home, Users, LogOut } from "lucide-react";
 import clsx from "clsx";
+import { useAuth } from "../../hooks/useAuth";
 
 export const Navigation: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { isAdminLoggedIn, logout } = useAuth();
 
-  const navItems = [
-    { path: "/", label: "Jobs", icon: Home },
-    { path: "/recruiter", label: "Pipeline", icon: Users },
-  ];
+  const navItems = [{ path: "/", label: "Jobs", icon: Home }];
+
+  if (isAdminLoggedIn) {
+    navItems.push({ path: "/recruiter", label: "Pipeline", icon: Users });
+  }
+
+  const handleLogout = () => {
+    logout();
+    navigate("/"); // go back to jobs
+  };
 
   return (
     <nav className="flex items-center space-x-4">
       {navItems.map((item) => {
         const Icon = item.icon;
         const isActive = location.pathname === item.path;
-
         return (
           <Link
             key={item.path}
@@ -33,6 +41,25 @@ export const Navigation: React.FC = () => {
           </Link>
         );
       })}
+
+      {!isAdminLoggedIn && (
+        <Link
+          to="/admin-login"
+          className="ml-auto px-4 py-2 rounded-lg bg-amber-100 text-amber-900 hover:bg-amber-200"
+        >
+          Admin Login
+        </Link>
+      )}
+
+      {isAdminLoggedIn && (
+        <button
+          onClick={handleLogout}
+          className="ml-auto flex items-center space-x-1 px-4 py-2 rounded-lg bg-red-100 text-red-700 hover:bg-red-200 transition"
+        >
+          <LogOut className="h-4 w-4" />
+          <span>Logout</span>
+        </button>
+      )}
     </nav>
   );
 };
