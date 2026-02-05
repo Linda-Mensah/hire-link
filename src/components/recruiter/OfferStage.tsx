@@ -163,7 +163,7 @@ const OfferStage: React.FC = () => {
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="Additional details about the offer..."
-                  className="mt-2 min-h-[100px]"
+                  className="mt-2 min-h-25"
                 />
               </div>
             </div>
@@ -242,7 +242,7 @@ const OfferStage: React.FC = () => {
               <CardTitle>Offer Preview</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="bg-stone-50 rounded-lg p-4 max-h-[300px] overflow-y-auto">
+              <div className="bg-stone-50 rounded-lg p-4 max-h-75 overflow-y-auto">
                 <pre className="text-sm text-stone-700 whitespace-pre-wrap">
                   {candidate.offerLetter ||
                     `OFFER LETTER

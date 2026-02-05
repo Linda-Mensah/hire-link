@@ -170,7 +170,7 @@ const PipelineBoard: React.FC = () => {
                         <div className="flex items-start justify-between mb-3">
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">
-                              <User className="h-4 w-4 text-stone-400 flex-shrink-0" />
+                              <User className="h-4 w-4 text-stone-400 shrink-0" />
                               <Link
                                 to={`/recruiter/candidate/${candidate.id}`}
                                 className="font-medium text-stone-800 hover:text-amber-700 truncate"
@@ -282,7 +282,7 @@ const PipelineBoard: React.FC = () => {
                             {candidate.skills.slice(0, 3).map((skill, idx) => (
                               <span
                                 key={idx}
-                                className="px-2 py-1 bg-stone-100 text-stone-700 text-xs rounded-md truncate max-w-[100px]"
+                                className="px-2 py-1 bg-stone-100 text-stone-700 text-xs rounded-md truncate max-w-25"
                                 title={skill}
                               >
                                 {skill}
