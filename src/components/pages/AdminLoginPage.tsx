@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { toast } from "react-toastify";
+import { ArrowLeft } from "lucide-react";
 // import { mockAdmins } from "../../constants/mockAdmins";
 
 const AdminLoginPage: React.FC = () => {
@@ -113,7 +114,7 @@ const AdminLoginPage: React.FC = () => {
 
           <button
             type="submit"
-            className={`w-full p-3.5 rounded-lg font-medium transition-all duration-200 ${
+            className={`w-full p-3.5 rounded-lg font-medium  cursor-pointer transition-all duration-200 ${
               loading
                 ? "bg-linear-to-r from-amber-300 to-amber-300 cursor-not-allowed"
                 : "bg-linear-to-r from-amber-600 to-amber-500 hover:from-amber-700 hover:to-amber-600 shadow-sm hover:shadow"
@@ -132,10 +133,12 @@ const AdminLoginPage: React.FC = () => {
 
           <button
             type="button"
-            className="w-full p-3.5 rounded-lg border border-stone-300 text-stone-700 font-medium hover:bg-stone-50 hover:border-stone-400 transition-all duration-200"
+            className="w-full p-3.5 flex  gap-4 items-center justify-center cursor-pointer rounded-lg border border-stone-300 text-stone-700 font-medium hover:bg-stone-50 hover:border-stone-400 transition-all duration-200"
             onClick={() => navigate("/")}
           >
-            Continue as Candidate
+            {" "}
+            <ArrowLeft />
+            Back Home
           </button>
         </form>
       </div>
