@@ -58,7 +58,7 @@ const OfferStage: React.FC = () => {
     generateOffer(candidateId!);
     toast.success("Offer letter generated successfully!");
 
-    // Mock sending email
+    // mock sending email
     setTimeout(() => {
       toast.info("Offer email sent to candidate");
       navigate("/recruiter");
@@ -71,7 +71,7 @@ const OfferStage: React.FC = () => {
       return;
     }
 
-    // Mock download
+    // mock download
     const element = document.createElement("a");
     const file = new Blob([candidate.offerLetter], { type: "text/plain" });
     element.href = URL.createObjectURL(file);

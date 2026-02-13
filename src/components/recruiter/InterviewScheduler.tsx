@@ -1,4 +1,3 @@
-// InterviewScheduler.tsx - improved styling
 import React, { useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { Calendar, Clock, Video, User, Send } from "lucide-react";
@@ -62,7 +61,7 @@ const InterviewScheduler: React.FC = () => {
     scheduleInterview(candidateId!, interviewDateTime.toISOString());
     toast.success("Interview scheduled successfully!");
 
-    // Send confirmation email (mock)
+    // send confirmation email (mock)
     setTimeout(() => {
       toast.info("Confirmation email sent to candidate");
       navigate("/recruiter");

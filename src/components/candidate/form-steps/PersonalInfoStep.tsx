@@ -66,7 +66,7 @@ const PersonalInfoStep = () => {
                   : "border-stone-300 hover:border-stone-400"
               }
             `}
-            placeholder="john@example.com"
+            placeholder="youn@example.com"
           />
 
           {errors.personalInfo?.email && (

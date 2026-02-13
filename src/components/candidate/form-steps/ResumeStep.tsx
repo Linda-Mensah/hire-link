@@ -22,7 +22,7 @@ const ResumeStep = () => {
     const file = e.target.files?.[0] ?? null;
 
     if (file) {
-      // Check file size (max 5MB)
+      // check file size (max 5MB)
       if (file.size > 5 * 1024 * 1024) {
         alert("File size must be less than 5MB");
         return;
@@ -42,7 +42,7 @@ const ResumeStep = () => {
       shouldValidate: true,
     });
     setFileName("");
-    // Reset file input
+    // reset file input
     const fileInput = document.getElementById("resume") as HTMLInputElement;
     if (fileInput) fileInput.value = "";
   };

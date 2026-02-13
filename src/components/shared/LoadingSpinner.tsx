@@ -1,4 +1,4 @@
-// not in use yet - add skeleton loader maybe
+// not in use yet
 
 const LoadingSpinner = () => {
   return <div>LoadingSpinner</div>;

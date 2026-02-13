@@ -64,7 +64,7 @@ const ThankYouPage: React.FC = () => {
                   <div
                     className="h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-blue-100 
                                 text-blue-600 flex items-center justify-center 
-                                text-xs sm:text-sm font-medium mr-3 flex-shrink-0"
+                                text-xs sm:text-sm font-medium mr-3 shrink-0"
                   >
                     1
                   </div>
@@ -76,7 +76,7 @@ const ThankYouPage: React.FC = () => {
                   <div
                     className="h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-blue-100 
                                 text-blue-600 flex items-center justify-center 
-                                text-xs sm:text-sm font-medium mr-3 flex-shrink-0"
+                                text-xs sm:text-sm font-medium mr-3 shrink-0"
                   >
                     2
                   </div>
@@ -89,7 +89,7 @@ const ThankYouPage: React.FC = () => {
                   <div
                     className="h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-blue-100 
                                 text-blue-600 flex items-center justify-center 
-                                text-xs sm:text-sm font-medium mr-3 flex-shrink-0"
+                                text-xs sm:text-sm font-medium mr-3 shrink-0"
                   >
                     3
                   </div>

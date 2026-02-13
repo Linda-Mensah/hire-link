@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Home, Users, LogOut, Menu, X } from "lucide-react";
-import { useAuthStore } from "../../stores/authStore"; // Change this import
+import { useAuthStore } from "../../stores/authStore";
 import clsx from "clsx";
 
 export const Navigation: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { isAuthenticated, logout } = useAuthStore(); // Use isAuthenticated instead of isAdminLoggedIn
+  const { isAuthenticated, logout } = useAuthStore();
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [{ path: "/", label: "Jobs", icon: Home }];
   if (isAuthenticated)
-    // Use isAuthenticated
     navItems.push({ path: "/recruiter", label: "Pipeline", icon: Users });
 
   const handleLogout = () => {
@@ -24,19 +23,19 @@ export const Navigation: React.FC = () => {
   return (
     <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          {/* Logo */}
-          <div className="flex-shrink-0 flex items-center">
+        <div className="flex justify-between h-20  items-center">
+          {/* logo */}
+          <div className="shrink-0 flex items-center">
             <Link to="/" className="text-xl font-bold text-amber-600">
               <img
                 src="/images/hirelink-logo.png"
-                className="w-16 h-16 object-cover"
+                className="w-18 h-20 object-cover"
                 alt="hirelink logo"
               />
             </Link>
           </div>
 
-          {/* Desktop Menu */}
+          {/* desktop Menu */}
           <div className="hidden md:flex md:items-center flex-1 justify-end">
             <div className="flex items-center space-x-4">
               {navItems.map((item) => {
@@ -59,8 +58,8 @@ export const Navigation: React.FC = () => {
                 );
               })}
 
-              {/* Auth Button */}
-              {!isAuthenticated ? ( // Use isAuthenticated
+              {/* auth Button */}
+              {!isAuthenticated ? (
                 <Link
                   to="/admin-login"
                   className="px-3 py-2 rounded-md bg-amber-100 text-amber-900 text-sm font-medium hover:bg-amber-200"
@@ -79,7 +78,7 @@ export const Navigation: React.FC = () => {
             </div>
           </div>
 
-          {/* Mobile menu button */}
+          {/* mobile menu button */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -91,7 +90,7 @@ export const Navigation: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* mobile menu */}
       {isOpen && (
         <div className="md:hidden bg-white shadow-lg w-full absolute top-16 left-0 overflow-hidden">
           <div className="flex flex-col px-4 py-3 space-y-2">
@@ -116,7 +115,7 @@ export const Navigation: React.FC = () => {
               );
             })}
 
-            {/* Mobile Auth Button */}
+            {/* mobile auth button */}
             {!isAuthenticated ? (
               <Link
                 to="/admin-login"

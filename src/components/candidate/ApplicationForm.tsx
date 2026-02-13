@@ -70,7 +70,7 @@ const ApplicationForm: React.FC = () => {
     if (isValid) {
       if (currentStep < steps.length - 1) {
         setCurrentStep(currentStep + 1);
-        // Scroll to top when changing steps
+        // scroll to top when changing steps
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         await handleSubmit();
@@ -134,7 +134,7 @@ const ApplicationForm: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-      {/* Back Link */}
+      {/* back link */}
       <div className="mb-6">
         <Link
           to="/"
@@ -145,9 +145,9 @@ const ApplicationForm: React.FC = () => {
         </Link>
       </div>
 
-      {/* Job Header */}
+      {/* job header */}
       <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-stone-800 mb-2 break-words">
+        <h1 className="text-2xl sm:text-3xl font-bold text-stone-800 mb-2 wrap-break-word">
           {job.title}
         </h1>
         <div className="flex flex-wrap items-center gap-2 text-stone-600">
@@ -160,12 +160,11 @@ const ApplicationForm: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Form Card */}
+      {/* main form card */}
       <div className="bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
-        {/* Progress Steps - Redesigned for better responsiveness */}
         <div className="border-b border-stone-200 bg-stone-50/50">
           <div className="px-4 sm:px-6 py-4">
-            {/* Desktop/Tablet Progress Steps */}
+            {/* desktop/tablet progress steps */}
             <div className="hidden sm:block">
               <div className="flex items-center justify-between">
                 {steps.map((step, index) => (
@@ -210,7 +209,7 @@ const ApplicationForm: React.FC = () => {
               </div>
             </div>
 
-            {/* Mobile Progress Indicator */}
+            {/* mobile progress indicator */}
             <div className="sm:hidden">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-medium text-stone-600">
@@ -245,7 +244,7 @@ const ApplicationForm: React.FC = () => {
           </div>
         </div>
 
-        {/* Form Content */}
+        {/* form content */}
         <div className="p-4 sm:p-6">
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(handleSubmit)}>
@@ -253,7 +252,7 @@ const ApplicationForm: React.FC = () => {
                 <CurrentStepComponent />
               </div>
 
-              {/* Navigation Buttons */}
+              {/* navigation buttons */}
               <div className="flex flex-col sm:flex-row justify-between gap-3 pt-6 border-t border-stone-200">
                 <button
                   type="button"

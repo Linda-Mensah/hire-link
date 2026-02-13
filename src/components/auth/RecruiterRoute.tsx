@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useAuthStore } from "../../stores/authStore"; // Change this import
+import { useAuthStore } from "../../stores/authStore";
 
 const RecruiterRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated } = useAuthStore();

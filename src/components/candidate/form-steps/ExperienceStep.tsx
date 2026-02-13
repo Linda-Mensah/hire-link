@@ -63,7 +63,7 @@ const ExperienceStep = () => {
             id="skills"
             {...register("experience.skills")}
             className={`
-              w-full min-h-[120px] transition-all
+              w-full min-h-30 transition-all
               ${
                 errors.experience?.skills
                   ? "border-red-300 focus:ring-red-500"

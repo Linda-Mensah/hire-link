@@ -1,4 +1,3 @@
-// CandidateReview.tsx - improved styling
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Calendar, Mail, Phone, Star, FileText, Briefcase } from "lucide-react";
