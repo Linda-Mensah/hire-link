@@ -20,8 +20,8 @@ const AdminLoginPage: React.FC = () => {
     setLoading(false);
 
     if (success) {
-      toast.success("Login successful!");
       navigate("/recruiter"); // navigation now works because role is set
+      toast.success("Login successful!");
     } else {
       toast.error("Invalid credentials");
     }

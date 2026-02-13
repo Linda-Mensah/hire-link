@@ -1,11 +1,11 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth";
+import { useAuthStore } from "../../stores/authStore"; // Change this import
 
 const RecruiterRoute = ({ children }: { children: React.ReactNode }) => {
-  const { isAdminLoggedIn } = useAuth();
+  const { isAuthenticated } = useAuthStore();
 
-  if (!isAdminLoggedIn) return <Navigate to="/admin-login" replace />;
+  if (!isAuthenticated) return <Navigate to="/admin-login" replace />;
 
   return <>{children}</>;
 };
