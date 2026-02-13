@@ -1,64 +1,138 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Home, Users, LogOut } from "lucide-react";
-import clsx from "clsx";
+import { Home, Users, LogOut, Menu, X } from "lucide-react";
 import { useAuth } from "../../hooks/useAuth";
+import clsx from "clsx";
 
 export const Navigation: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { isAdminLoggedIn, logout } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [{ path: "/", label: "Jobs", icon: Home }];
-
-  if (isAdminLoggedIn) {
+  if (isAdminLoggedIn)
     navItems.push({ path: "/recruiter", label: "Pipeline", icon: Users });
-  }
 
   const handleLogout = () => {
     logout();
     navigate("/");
+    setIsOpen(false);
   };
 
   return (
-    <nav className="flex items-center space-x-3">
-      {navItems.map((item) => {
-        const Icon = item.icon;
-        const isActive = location.pathname === item.path;
-        return (
-          <Link
-            key={item.path}
-            to={item.path}
-            className={clsx(
-              "flex items-center space-x-2.5 px-4 py-2.5 rounded-lg transition-all duration-200 group",
-              isActive
-                ? "bg-linear-to-r from-amber-50 to-amber-100/50 text-amber-900 shadow-sm ring-1 ring-amber-200"
-                : "text-stone-600 hover:bg-stone-50 hover:text-stone-900 hover:shadow-sm",
+    <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16 items-center">
+          {/* Logo */}
+          <div className="flex-shrink-0 flex items-center">
+            <Link to="/" className="text-xl font-bold text-amber-600">
+              <img
+                src="/images/hirelink-logo.png"
+                className="w-16 h-16 object-cover"
+                alt="hirelink logo"
+              />
+            </Link>
+          </div>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex md:items-center md:space-x-4 flex-1">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = location.pathname === item.path;
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={clsx(
+                    "flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition",
+                    isActive
+                      ? "bg-amber-100 text-amber-900 shadow-sm"
+                      : "text-stone-700 hover:bg-stone-50 hover:text-stone-900",
+                  )}
+                >
+                  <Icon className="w-5 h-5" />
+                  <span>{item.label}</span>
+                </Link>
+              );
+            })}
+
+            <div className="ml-auto flex items-center space-x-2">
+              {!isAdminLoggedIn ? (
+                <Link
+                  to="/admin-login"
+                  className="px-3 py-2 rounded-md bg-amber-100 text-amber-900 text-sm font-medium hover:bg-amber-200"
+                >
+                  Admin Login
+                </Link>
+              ) : (
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center space-x-1 px-3 py-2 rounded-md bg-red-50 text-red-700 text-sm font-medium hover:bg-red-100"
+                >
+                  <LogOut className="w-4 h-4" />
+                  <span>Logout</span>
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-md hover:bg-stone-100 transition"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden bg-white shadow-lg w-full absolute top-16 left-0 overflow-hidden">
+          <div className="flex flex-col px-4 py-3 space-y-2">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = location.pathname === item.path;
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setIsOpen(false)}
+                  className={clsx(
+                    "flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition",
+                    isActive
+                      ? "bg-amber-100 text-amber-900"
+                      : "text-stone-700 hover:bg-stone-50 hover:text-stone-900",
+                  )}
+                >
+                  <Icon className="w-5 h-5" />
+                  <span>{item.label}</span>
+                </Link>
+              );
+            })}
+
+            {!isAdminLoggedIn ? (
+              <Link
+                to="/admin-login"
+                onClick={() => setIsOpen(false)}
+                className="px-3 py-2 rounded-md bg-amber-100 text-amber-900 text-sm font-medium hover:bg-amber-200"
+              >
+                Admin Login
+              </Link>
+            ) : (
+              <button
+                onClick={handleLogout}
+                className="flex items-center space-x-2 px-3 py-2 rounded-md bg-red-50 text-red-700 text-sm font-medium hover:bg-red-100"
+              >
+                <LogOut className="w-4 h-4" />
+                <span>Logout</span>
+              </button>
             )}
-          >
-            <Icon className="h-5 w-5 transition-transform duration-200 group-hover:scale-110" />
-            <span className="font-medium tracking-wide">{item.label}</span>
-          </Link>
-        );
-      })}
-
-      {!isAdminLoggedIn && (
-        <Link
-          to="/admin-login"
-          className="ml-auto px-5 py-2.5 rounded-lg bg-linear-to-r from-amber-100 to-amber-50 text-amber-900 hover:from-amber-200 hover:to-amber-100 shadow-sm hover:shadow transition-all duration-200 font-medium ring-1 ring-amber-200 hover:ring-amber-300"
-        >
-          Admin Login
-        </Link>
-      )}
-
-      {isAdminLoggedIn && (
-        <button
-          onClick={handleLogout}
-          className="ml-auto flex items-center space-x-2.5 px-5 py-2.5 rounded-lg bg-linear-to-r from-red-50 to-red-50/80 text-red-700 hover:from-red-100 hover:to-red-50 shadow-sm hover:shadow transition-all duration-200 font-medium ring-1 ring-red-200 hover:ring-red-300"
-        >
-          <LogOut className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5" />
-          <span>Logout</span>
-        </button>
+          </div>
+        </div>
       )}
     </nav>
   );
